@@ -133,3 +133,5 @@ The request body should be in JSON format and include the following fields:
         - `vehicleType` (string) vehicle type
         - `plate` (string) vehicle number plate
 - `token` (String): JWT Token
+
+
