@@ -47,6 +47,11 @@ const rideSchema = new mongoose.Schema({
     signature: {
         type: String,
     },
+    paymentStatus: {
+        type: String,
+        enum: [ 'pending', 'paid', 'failed', 'refunded' ],
+        default: 'pending',
+    },
 
     otp: {
         type: String,

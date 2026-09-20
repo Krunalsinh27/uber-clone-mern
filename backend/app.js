@@ -10,6 +10,7 @@ const captainRoutes = require('./routes/captain.routes');
 const mapsRoutes = require('./routes/maps.routes');
 const rideRoutes = require('./routes/ride.routes');
 const ratingRoutes = require('./routes/rating.routes');
+const paymentRoutes = require('./routes/payment.routes');
 
 connectToDb();
 
@@ -33,6 +34,8 @@ app.use('/captains', captainRoutes);
 app.use('/maps', mapsRoutes);
 app.use('/rides', rideRoutes);
 app.use('/ratings', ratingRoutes);
+app.use('/payment', paymentRoutes);
+
 
 // Global Error Handler
 app.use((err, req, res, next) => {

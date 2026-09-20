@@ -101,10 +101,20 @@ const RideDetailModal = ({ ride, onClose, userRole = 'user' }) => {
                     </div>
 
                     <div className='grid grid-cols-2 gap-3 mb-4'>
-                        <div className='bg-gray-50 p-3 rounded-xl border'>
-                            <p className='text-xs text-gray-500 font-semibold uppercase'>Fare Amount</p>
-                            <p className='text-xl font-bold text-gray-900'>₹{ride.fare}</p>
-                            <p className='text-[10px] text-gray-500'>Payment Method: Cash</p>
+                        <div className='bg-gray-50 p-3 rounded-xl border flex flex-col justify-between'>
+                            <div>
+                                <p className='text-xs text-gray-500 font-semibold uppercase'>Fare Amount</p>
+                                <p className='text-xl font-bold text-gray-900'>₹{ride.fare}</p>
+                            </div>
+                            <div className='mt-1 flex items-center gap-1.5'>
+                                <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${
+                                    ride.paymentStatus === 'paid' ? 'bg-green-100 text-green-800 border border-green-300' :
+                                    ride.paymentStatus === 'failed' ? 'bg-red-100 text-red-800 border border-red-300' :
+                                    'bg-yellow-100 text-yellow-800 border border-yellow-300'
+                                }`}>
+                                    Payment: {ride.paymentStatus || 'pending'}
+                                </span>
+                            </div>
                         </div>
 
                         <div className='bg-gray-50 p-3 rounded-xl border'>
@@ -115,6 +125,7 @@ const RideDetailModal = ({ ride, onClose, userRole = 'user' }) => {
                             )}
                         </div>
                     </div>
+
 
                     {userRole === 'user' && ride.captain && (
                         <div className='bg-gray-50 p-3 rounded-xl border mb-4 flex items-center gap-3'>
